@@ -32,6 +32,10 @@ Current local verification:
 - no causality claim from transfers alone
 - no financial-advice positioning
 
+## Research notes
+
+- [When Whale-Flow Fails](https://arpitpandey9.github.io/research/whale-flow-failure.html) — why positive ETH whale-flow should not be treated as a standalone durable signal after BTC benchmark adjustment.
+
 ## Research focus
 
 - On-chain analytics
