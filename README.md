@@ -25,12 +25,29 @@ What it does:
 
 Current local verification:
 
-- 193 tests passing
+- 214 tests passing
 - 91% total coverage
 - conservative liquidity interpretation
 - no fake data substitution
 - no causality claim from transfers alone
 - no financial-advice positioning
+
+## Protocol verification case study
+
+### WETH9 Large Deposits — Event-Level Verification
+
+A separate fixed-window Ethereum investigation tests protocol execution directly rather than inferring behavior from a function selector alone.
+
+For 135 successful native-ETH calls of at least 1,000 ETH to WETH9 between 23 Apr and 22 Jul 2026:
+
+- 135 / 135 had exactly one matching WETH9 `Deposit` event
+- 135 / 135 matched transaction value to the summed `Deposit`-event value in exact wei
+- 135 / 135 matched transaction sender to `Deposit` destination
+- 128 used selector-only calldata and 7 carried trailing calldata
+- the 7 trailing-calldata cases grouped into 3 observed byte patterns with counts 5 / 1 / 1
+- the analysis does not infer wallet software, entity ownership, shared infrastructure, or economic intent from those byte patterns
+
+[Canonical row-level Dune evidence](https://dune.com/queries/8299357) · [Live Dune dashboard](https://dune.com/arpitpandey/weth9-large-deposits-event-level-verification) · [GitHub case study](https://github.com/ArpitPandey9/crypto-research-engine/blob/main/docs/WETH9_EVENT_LEVEL_VERIFICATION.md)
 
 ## Research notes
 
@@ -70,10 +87,9 @@ I try to build projects that are:
 ## What I am building next
 
 - event-time liquidity backfill for stronger DeFi liquidity context
-- Dune dashboards for public on-chain analysis
-- short research notes based on validated outputs
-- GitHub Pages portfolio for crypto research artifacts
 - deeper protocol-risk and blockchain-intelligence case studies
+- additional reproducible on-chain investigations with explicit evidence boundaries
+- short research notes based on validated outputs
 
 ## Background
 
